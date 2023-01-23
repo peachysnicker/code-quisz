@@ -11,66 +11,108 @@
 
 <body>
     <header>
-        <h1>CODE QUIZ</h1>
-        <div>
-            <h3 id="countdown" style="text-align:right;"></h3>
-            <button id="startBtn">start</button>
+
+        <div class="countdown">
+            <h1>CODE QUIZ</h1>
+            <h3 id="countdown" class="timer">Time 0</h3>
         </div>
-        <div>
-            <h3 class="">Correct:<span id="correct">0</span></h3>
-            <h3 class="">Incorrect:<span id="incorrect">0</span></h3>
+        <div class="score">
+            <h3 class="points">Points: <span class="wins">0</span></h3>
+
         </div>
     </header>
     <main>
-        <section class="container1">
-            <div class="box" id="question1">
-                <h2>Round 1</h2>
-                <h3>Question written here</h3>
-                <button id="1">1</button>
-                <button id="2">2</button>
-                <button id="3">3</button>
-                <button id="answer">4</button>
+        <section class="container0">
+            <div class="box index7" id="question0" data-state="hidden">
+                <h2>Get your brain ready!</h2>
+                <h3>Quiz begins now!</h3>
+                <button id="startBtn">start</button>
+                <p class="confirmation"></p>
+
             </div>
-        </section>
-        <section class="container2">
-            <div class="box" id="question2">
-                <h2>Round 2</h2>
-                <h3>Question written here</h3>
-                <button id="1">1</button>
-                <button id="2">2</button>
-                <button id="answer">3</button>
-                <button id="4">4</button>
+
+
+            <div class="box index6" id="question1" data-state="hidden">
+                <h2>Question 1</h2>
+                <h3>What does HTML?</h3>
+                <button id="1">Happy Turtles Move Low</button>
+                <button id="2">Hypertuttle Markup Language</button>
+                <button id="3">Happy Thing Makes Laughing</button>
+                <button id="answer1">Hypertext Markup Language</button>
+                <p class="confirmation"></p>
+                <button id="nextQuestion1" disabled>Next question</button>
             </div>
-        </section>
-        <section class="container3">
-            <div class="box" id="question3">
-                <h2>Round 3</h2>
-                <h3>Question written here</h3>
-                <button id="answer">1</button>
-                <button id="2">2</button>
-                <button id="3">3</button>
-                <button id="4">4</button>
+
+
+            <div class="box index5" id="question2" data-state="hidden">
+                <h2>Question 2</h2>
+                <h3>How do we select a class in CSS?</h3>
+                <button id="1">.box.</button>
+                <button id="2">-box</button>
+                <button id="answer2">.box</button>
+                <button id="4">(box)</button>
+                <p class="confirmation"></p>
+                <button id="nextQuestion2" disabled>Next question</button>
+
+
             </div>
-        </section>
-        <section class="container4">
-            <div class="box" id="question4">
-                <h2>Round 4</h2>
-                <h3>Question written here</h3>
-                <button id="1">1</button>
-                <button id="answer">2</button>
-                <button id="3">3</button>
-                <button id="4">4</button>
+
+            <div class="box index4" id="question3" data-state="hidden">
+                <h2>Question 3</h2>
+                <h3>What year was JavaScript created?</h3>
+                <button id="answer3">1995</button>
+                <button id="2">1908</button>
+                <button id="3">2005</button>
+                <button id="4">2015</button>
+                <p class="confirmation"></p>
+                <button id="nextQuestion3" disabled>Next question</button>
+
             </div>
-        </section>
-        <section class="container5">
-            <div class="box" id="question5">
-                <h2>Round 5</h2>
-                <h3>Question written here</h3>
-                <button id="answer">1</button>
-                <button id="2">2</button>
-                <button id="3">3</button>
-                <button id="4">4</button>
+
+            <div class="box index3" id="question4" data-state="hidden">
+                <h2>Question 4</h2>
+                <h3>How do you create a JavaScript file on your computer?</h3>
+                <button id="1">styles.css</button>
+                <button id="answer4">script.js</button>
+                <button id="3">index.html</button>
+                <button id="4">readme.md</button>
+                <p class="confirmation"></p>
+                <button id="nextQuestion4" disabled>Next question</button>
+
             </div>
+
+            <div class="box index2" id="question5" data-state="hidden">
+                <h2>Question 5</h2>
+                <h3>How do you type a string in HTML?</h3>
+                <button id="answer5">"This is a string"</button>
+                <button id="2">-This is a string-</button>
+                <button id="3">:This is a string:</button>
+                <button id="4">{This is a string}</button>
+                <p class="confirmation"></p>
+                <button id="nextQuestion5" disabled>Next</button>
+
+            </div>
+
+            <div class="box index1" id="question6" data-state="hidden">
+                <h2>Please submit your initials</h2>
+                <h3>to record your score!</h3>
+
+                <form id="initialInput">
+                    <label for="initials">Type here </label>
+                    <input id="initials" type="text" placeholder="Type your initials here" name="initals"
+                        class="wins" />
+                    <input type="submit" id="submit" name="initals" />
+                </form>
+                <p id="">Thanks for playing!</p>
+            </div>
+
+            <div class="box index0" id="thankYou" data-state="hidden">
+                <h2>Check out other high scores!</h2>
+                <h2>Last Registered User:</h2>
+                <p><strong>Initials: </strong> <span id="userInitialSpan"></span></p>
+                <p><strong>Score: </strong> <span id="userWinCounterSpan"></span></p>
+            </div>
+
         </section>
     </main>
 

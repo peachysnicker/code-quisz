@@ -1,93 +1,221 @@
 var countdownTimer = document.querySelector("#countdown")
 var startBtn = document.querySelector("#startBtn")
-var correct = document.querySelector("#correct")
-var incorrect = document.querySelector("incorrect")
+var container = document.querySelector(".box")
+var pointCounter = document.querySelector(".wins")
+var win = document.querySelector("#correct")
+//var answer1 = document.querySelector("#answer1")
+var confirmation = document.querySelector(".confirmation")
+var userWinCounterSpan = document.querySelector("#userWinCounterSpan")
+var userInitialSpan = document.querySelector("#userInitialSpan")
 
-var answer = document.querySelectorAll(".answer")
+var winCount = document.querySelector("#winCount")
+var nextButton = document.querySelector("nextQuestion1")
+var initialInput = document.querySelector("#initals")
+
+var winCounter = 0;
+var initalsInput = " ";
+var timeLeft = 75
+var timer;
+var isWin = false;
+var timerCount;
 
 
-var container1 = document.querySelector(".container1")
-var container2 = document.querySelector(".container2")
-var container3 = document.querySelector(".container3")
-var container4 = document.querySelector(".container4")
-var container5 = document.querySelector(".container5")
-/*
-var button1 = document.querySelector("#1");
-var button2 = document.querySelector("#2");
-var button3 = document.querySelector("#3");
-var button4 = document.querySelector("#4");
-*/
-var correct
-var incorrect
-var TimeLeft;
+//function for message on correct answer of button click - couldnt figure out how to remove when I went to next question
+function message() {
+    var message = document.createElement("div");
+    message.textContent = "You are Correcto!";
+    message.style.visibility = "visible";
+    confirmation.appendChild(message);
+    console.log("did it create the message?")
+    return;
+}
 
+
+// called to start countdown when click start
 function startQuiz() {
     timeLeft = 75;
-    startBtn.disabled = true;
+    isWin = false;
     countdown();
 }
 
 
-// saving to local api score
-function correctAns() {
-    correct.textContent = correctCounter;
-    localStorage.setItem("CorrectCount", correctCounter);
+//WORKING to run when the condition of winning a point is met
+function winGame() {
+    pointCounter.textContent = winCounter;
+    winCounter++;
+    setWins();
 }
-function incorrectAns() {
-    incorrect.textContent = incorrectCounter;
-    localStorage.setItem("incorrectCount", incorrectCounter);
+//WORKING on click of correct it enables the next question box
+document.getElementById("answer1").addEventListener("click", () => {
+    document.querySelector("#nextQuestion1").disabled = false;
+    winGame();
+
+})
+document.getElementById("answer2").addEventListener("click", () => {
+    document.querySelector("#nextQuestion2").disabled = false;
+    winGame();
+
+})
+document.getElementById("answer3").addEventListener("click", () => {
+    document.querySelector("#nextQuestion3").disabled = false;
+    winGame();
+
+})
+document.getElementById("answer4").addEventListener("click", () => {
+    document.querySelector("#nextQuestion4").disabled = false;
+    winGame();
+
+})
+document.getElementById("answer5").addEventListener("click", () => {
+    document.querySelector("#nextQuestion5").disabled = false;
+    winGame();
+
+})
+
+
+
+// WORKING saving to local api score
+function setWins() {
+    pointCounter.textContent = winCounter;
+    localStorage.setItem("winCount", winCounter);
+}
+
+function saveScore() {
+    var intials = document.querySelector("#initials").value;
+    localStorage.setItem("Initials", intials);
+}
+
+//render previous users and score
+function renderLastRegistered(type, message) {
+    initials = document.querySelector("Initials");
+    winCounterCounter = localStorage.querySelector("winCount");
+    userInitialSpan.textContent = initials;
+    userWinCounterSpan.textContent = winCounter;
+
 }
 
 
-//UNSURE IF CORRECT ISSUE ON LINE 42 with .container
-//on click of correctAns it will change data-state to be showing not hidden
-/*container.addEventListener("click", function (event) {
-    var element = event.target;
-    if (element.matches(".box") === true) {
-        var state = element.getAttribute("data-state") //if it is we grab the data state
+//WORKING change visibility to next question when correct answer is chosen
+document.getElementById("startBtn").addEventListener(
+    "click", () => {
+        document.getElementById("question0").style.visibility = "hidden";
+        document.getElementById("question1").style.visibility = "visible";
+        document.getElementById("question2").style.visibility = "hidden";
+        document.getElementById("question3").style.visibility = "hidden";
+        document.getElementById("question4").style.visibility = "hidden";
+        document.getElementById("question5").style.visibility = "hidden";
+        document.getElementById("question6").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+    }
 
-        if (state === "hidden") {  //if it is hidden then run
-            // element.textContent = element.dataset.number; //if the card is clicked while in hidden it will become "visible"
-            element.dataset.state = "visible";
-        } else {
-            //element.textContent = "";
-            element.setAttribute("data-state", "hidden")
-        }
+)
+
+document.getElementById("nextQuestion1").addEventListener(
+    "click", () => {
+        document.getElementById("question0").style.visibility = "hidden";
+        document.getElementById("question1").style.visibility = "hidden";
+        document.getElementById("question2").style.visibility = "visible";
+        document.getElementById("question3").style.visibility = "hidden";
+        document.getElementById("question4").style.visibility = "hidden";
+        document.getElementById("question5").style.visibility = "hidden";
+        document.getElementById("question6").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
 
     }
-});
+)
 
-
-document.getElementById("okButton").addEventListener(
-    "click",
-    () => {
-        document.getElementById("welcome").hidden = true;
-        document.getElementById("awesome").hidden = false;
-    },
-    false
-);
-*/
-document.getElementById("answer").addEventListener(
+document.getElementById("nextQuestion2").addEventListener(
     "click", () => {
-        document.getElementById("container1").hidden = true;
-        document.getElementById("container2").hidden = false;
-    },
-    false
+        document.getElementById("question0").style.visibility = "hidden";
+        document.getElementById("question1").style.visibility = "hidden";
+        document.getElementById("question2").style.visibility = "hidden";
+        document.getElementById("question3").style.visibility = "visible";
+        document.getElementById("question4").style.visibility = "hidden";
+        document.getElementById("question5").style.visibility = "hidden";
+        document.getElementById("question6").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+
+    }
+)
+
+document.getElementById("nextQuestion3").addEventListener(
+    "click", () => {
+        document.getElementById("question0").style.visibility = "hidden";
+        document.getElementById("question1").style.visibility = "hidden";
+        document.getElementById("question2").style.visibility = "hidden";
+        document.getElementById("question3").style.visibility = "hidden";
+        document.getElementById("question4").style.visibility = "visible";
+        document.getElementById("question5").style.visibility = "hidden";
+        document.getElementById("question6").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+
+    }
+)
+
+document.getElementById("nextQuestion4").addEventListener(
+    "click", () => {
+        document.getElementById("question0").style.visibility = "hidden";
+        document.getElementById("question1").style.visibility = "hidden";
+        document.getElementById("question2").style.visibility = "hidden";
+        document.getElementById("question3").style.visibility = "hidden";
+        document.getElementById("question4").style.visibility = "hidden";
+        document.getElementById("question5").style.visibility = "visible";
+        document.getElementById("question6").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+
+    }
+)
+
+document.getElementById("nextQuestion5").addEventListener(
+    "click", () => {
+        document.getElementById("question0").style.visibility = "hidden";
+        document.getElementById("question1").style.visibility = "hidden";
+        document.getElementById("question2").style.visibility = "hidden";
+        document.getElementById("question3").style.visibility = "hidden";
+        document.getElementById("question4").style.visibility = "hidden";
+        document.getElementById("question5").style.visibility = "hidden";
+        document.getElementById("question6").style.visibility = "visible";
+        document.getElementById("thankYou").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "hidden";
+
+    }
+)
+document.getElementById("submit").addEventListener(
+    "click", () => {
+        document.getElementById("question0").style.visibility = "hidden";
+        document.getElementById("question1").style.visibility = "hidden";
+        document.getElementById("question2").style.visibility = "hidden";
+        document.getElementById("question3").style.visibility = "hidden";
+        document.getElementById("question4").style.visibility = "hidden";
+        document.getElementById("question5").style.visibility = "hidden";
+        document.getElementById("question6").style.visibility = "hidden";
+        document.getElementById("thankYou").style.visibility = "visible";
+        saveScore()
+        renderLastRegistered();
+    }
 )
 
 
 
-
-
-
-// Countdown timer
+// WORKING except if there is no time left Countdown timer
 function countdown() {
-    var timer = setInterval(function () {
+    timer = setInterval(function () {
         countdownTimer.textContent = timeLeft + " seconds left!";
         timeLeft--;
-
+        if (timeLeft >= 0) {
+            if (isWin && timeLeft > 0) {
+                clearInterval(timer);
+                winGame();
+            }
+        }
         if (timeLeft === 0) {
             clearInterval(timer);
+            //loseGame();
         }
     }, 1000);
 }
@@ -97,12 +225,6 @@ startBtn.addEventListener("click", startQuiz);
 
 
 
-/*
-var question = 1;
 
-if (button2.pressed() && question == 1) {
-    //correct
-    question++;
-}
 
-*/
+
