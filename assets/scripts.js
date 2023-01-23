@@ -2,8 +2,9 @@ var countdownTimer = document.querySelector("#countdown")
 var startBtn = document.querySelector("#startBtn")
 var container = document.querySelector(".box")
 var pointCounter = document.querySelector(".wins")
+var displayScore = document.querySelector(".score")
 var win = document.querySelector("#correct")
-//var answer1 = document.querySelector("#answer1")
+
 var confirmation = document.querySelector(".confirmation")
 var userWinCounterSpan = document.querySelector("#userWinCounterSpan")
 var userInitialSpan = document.querySelector("#userInitialSpan")
@@ -14,7 +15,7 @@ var initialInput = document.querySelector("#initals")
 
 var winCounter = 0;
 var initalsInput = " ";
-var timeLeft = 75
+var timeLeft = 0;
 var timer;
 var isWin = false;
 var timerCount;
@@ -33,7 +34,7 @@ function message() {
 
 // called to start countdown when click start
 function startQuiz() {
-    timeLeft = 75;
+    timeLeft = 15;
     isWin = false;
     countdown();
 }
@@ -85,12 +86,18 @@ function saveScore() {
     localStorage.setItem("Initials", intials);
 }
 
+function displayScore() {
+    userWinCounterSpan.textContent = winCounter;
+    localStorage.getItem("Initials", initials);
+}
+
 //render previous users and score
-function renderLastRegistered(type, message) {
+function renderLastRegistered(event) {
     initials = document.querySelector("Initials");
     winCounterCounter = localStorage.querySelector("winCount");
     userInitialSpan.textContent = initials;
     userWinCounterSpan.textContent = winCounter;
+    displayScore();
 
 }
 
@@ -196,7 +203,7 @@ document.getElementById("submit").addEventListener(
         document.getElementById("question6").style.visibility = "hidden";
         document.getElementById("thankYou").style.visibility = "visible";
         saveScore()
-        renderLastRegistered();
+
     }
 )
 
@@ -207,15 +214,10 @@ function countdown() {
     timer = setInterval(function () {
         countdownTimer.textContent = timeLeft + " seconds left!";
         timeLeft--;
-        if (timeLeft >= 0) {
-            if (isWin && timeLeft > 0) {
-                clearInterval(timer);
-                winGame();
-            }
-        }
         if (timeLeft === 0) {
+            countdownTimer.textContent = "YOU LOSE";
             clearInterval(timer);
-            //loseGame();
+            winGame();
         }
     }, 1000);
 }

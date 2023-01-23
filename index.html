@@ -72,10 +72,10 @@
             <div class="box index3" id="question4" data-state="hidden">
                 <h2>Question 4</h2>
                 <h3>How do you create a JavaScript file on your computer?</h3>
-                <button id="1">styles.css</button>
-                <button id="answer4">script.js</button>
-                <button id="3">index.html</button>
-                <button id="4">readme.md</button>
+                <button id="1" class="button">styles.css</button>
+                <button id="answer4" class="button">script.js</button>
+                <button id="3" class="button">index.html</button>
+                <button id="4" class="button">readme.md</button>
                 <p class="confirmation"></p>
                 <button id="nextQuestion4" disabled>Next question</button>
 
@@ -101,19 +101,24 @@
                     <label for="initials">Type here </label>
                     <input id="initials" type="text" placeholder="Type your initials here" name="initals"
                         class="wins" />
-                    <input type="submit" id="submit" name="initals" />
+
+                    <input id="submit" name="initals" placeholder="click to submit" class="button" />
                 </form>
                 <p id="">Thanks for playing!</p>
             </div>
-
             <div class="box index0" id="thankYou" data-state="hidden">
                 <h2>Check out other high scores!</h2>
                 <h2>Last Registered User:</h2>
                 <p><strong>Initials: </strong> <span id="userInitialSpan"></span></p>
                 <p><strong>Score: </strong> <span id="userWinCounterSpan"></span></p>
             </div>
-
         </section>
+
+
+
+
+
+
     </main>
 
     <script src="./assets/scripts.js"></script>
