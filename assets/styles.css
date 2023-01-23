@@ -1,35 +1,103 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-
 header {
     background-color: pink;
-    color: slateblue;
+    border-bottom: 2px black solid;
+    border-radius: 3px;
+    padding: 10px;
+
 }
 
-.container {
-    width: 80vw;
-    margin: 25px auto;
-    color: black;
+h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.countdown {
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+
+}
+
+.score {
+    padding-bottom: 3px;
+    padding-left: 15px;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px;
+
+
+}
+
+button:hover {
+    background-color: pink;
+    border-radius: 3px;
+}
+
+section {
+    display: flex;
+}
+
+.index0 {
+    z-index: 0;
+    position: absolute;
+}
+
+.index1 {
+    z-index: 1;
+    position: absolute;
+}
+
+.index2 {
+    z-index: 2;
+    position: absolute;
+}
+
+.index3 {
+    z-index: 3;
+    position: absolute;
+}
+
+.index4 {
+    z-index: 4;
+    position: absolute;
+}
+
+.index5 {
+    z-index: 5;
+    position: absolute;
+}
+
+.index6 {
+    z-index: 6;
+    position: absolute;
+}
+
+.index7 {
+    z-index: 7;
+    position: absolute;
 }
 
 .box {
-    display: block;
-
+    top: 20;
     border: 2px solid black;
-    float: left;
-    width: 31%;
-    height: 200px;
-    margin: 1%;
-    cursor: pointer;
-    object-fit: cover;
+    width: 70vw;
+    height: 70vh;
+    margin: 20px 20px 20px 180px;
     border-radius: 8px;
-    background-color: white;
+    background-color: rgb(255, 218, 224);
     text-align: center;
     line-height: 20px;
     font-size: 20px;
 
+}
+
+h2 {
+    padding-top: 150px;
+}
+
+.large-font {
+    font-size: 3.5em;
+    text-align: center;
 }
